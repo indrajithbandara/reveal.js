@@ -29,6 +29,21 @@
 		<div class="reveal">
 			<div class="slides">
 
+					<section id="one">
+							<h3>La gem DotEnv</h3>
+							<ol>
+								<li>A quoi sa sert ?</li>
+								<li>Les variables d' environnements</li>
+								<li>Comment on l' utilise</li>
+								<li>Git &amp; Github</li>
+							</ol>
+					</section>
+					
+					<section>
+						<p>Lien : <a href="https://github.com/bkeepers/dotenv" target="_blank">https://github.com/bkeepers/dotenv</a></p>
+						<img src="https://i.imgur.com/yCqcW9L.png">
+					</section>
+
 					<section id="dotenv-simple0">
 							<h3><span class="red">DotEnv</span> c' est quoi ?</h3>
 							<p>
@@ -102,54 +117,43 @@ ENV['TWITTER_ACCESS_SECRET']=64a84f8d-75cb-4689-8707-57937e5f7534
 
 					<section id="env-vars-in-42-seconds">
 							<blockquote cite="https://fr.wikipedia.org/wiki/Variable_d%27environnement">
-								En informatique, les variables d’environnement sont des variables dynamiques utilisées par les différents processus d’un système d’exploitation <a href="https://fr.wikipedia.org/wiki/Variable_d%27environnement">Wikipédia</a>
+								En informatique, les variables d’environnement sont des variables dynamiques utilisées par les différents processus d’un système d’exploitation  (Windows, Unix, etc.) <a href="https://fr.wikipedia.org/wiki/Variable_d%27environnement" target="_blank" style="font-size:30px;float:right;margin:15px;">Wikipédia</a>
 							</blockquote>
+							<pre><code class="zsh" data-trim contenteditable>
+							
+									export PATH="$PATH:$HOME/.rvm/bin"
+									export PATH="$HOME/.rbenv/bin:$PATH"
+									eval "$(rbenv init -)"
+									export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+									
+								</code></pre>
 					</section>
 
 					<section>
-						<h5>Les variables d' environnement</h5>
+						<h5>Des variables pour chaque environnement</h5>
 							<img class="img-responsive" src="http://img.e-marketing.fr/Img/BREVE/2015/6/256198/Marketing-meteo-fait-pluie-beau-temps-F.jpg" style="max-height: 400px;">
 						</section>
 
-					<section id="two">
-							<img src="https://i.imgur.com/yCqcW9L.png">
+						<section>
+							<p>
+								On à un site avec 2 versions, une en dévelopement et une autre en production.
+							</p>
+							<p>Les variables d' environnement peuvent etre différentes pour chaque environnement pour le meme projet</p>
+							
 						</section>
 
-						
+						<section>
+								<p>
+										Example en dev on met en place une newsletter pour verifier la bonne fonctionalité de celle ci avant le passage en production on utilise un service comme <a href="https://mailtrap.io/" target="_target">Mailtrap</a> pour éviter de spammer notre mailing list de client</p>
+									</p>
+									<p>
+										Celui-ci nous fournis des cléfs d' API (Application Programming Interface) pour l' envoie de mail, elle font partis de nos variables d' environnement pour notre serveur de dévelopement.
+									</p>
+									<p>
+										La version en production utilisera d' autres variables d' environnements pour l' envoie de mail.
+									</p>
+						</section>
 
-				
-			
-			<section id="one">
-					<h3>La gem DotEnv</h3>
-					<ol>
-						<li>A quoi sa sert ?</li>
-						<li>Les variables d' environnements</li>
-						<li>Comment on l' utilise</li>
-						<li>Git &amp; Github</li>
-					</ol>
-			</section>
-			
-		
-
-
-			<section>
-				<p>Lien : <a href="https://github.com/bkeepers/dotenv" target="_blank">https://github.com/bkeepers/dotenv</a></p>
-				<img src="https://i.imgur.com/yCqcW9L.png">
-			</section>
-				
-			
-
-				<section>
-						<pre><code class="zsh" data-trim contenteditable>
-							
-							export PATH="$PATH:$HOME/.rvm/bin"
-							export PATH="$HOME/.rbenv/bin:$PATH"
-							eval "$(rbenv init -)"
-							export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-							
-						</code></pre>
-						<p>home/david/.bashrc</p>
-					</section>	
 			</div>
 		</div>
 
