@@ -35,12 +35,17 @@
 
 					<section id="one">
 							<h3>La gem DotEnv</h3>
+							<br>
 							<ol>
 								<li>A quoi ça sert ?</li>
 								<li>Comment on l' utilise</li>
 								<li>Git &amp; Github <i class="fa fa-github-square" aria-hidden="true"> avec @showner</i>
 								</li>
 							</ol>
+							<br>
+							<br>
+							<p>Lien : <a href="https://github.com/bkeepers/dotenv" target="_blank">https://github.com/bkeepers/dotenv</a></p>
+
 					</section>	
 					
 					<!-- Example of nested vertical slides -->
@@ -60,7 +65,7 @@
 								border: 0px; 
 								box-shadow: none">
 							</p>
-								<p class="fragment" data-fragment-index="0" style="font-size:30px;">Sa marche  sur un script en local <i class="fa fa-check" style="font-size:48px;color:green"></i>
+								<p class="fragment" data-fragment-index="0" style="font-size:30px;">Sa marche dans nos en local <i class="fa fa-check" style="font-size:48px;color:green"></i>
 								</p>
 								<p class="fragment" data-fragment-index="1" style="font-size:30px;">Mais aussi sur les plateformes comme Heroku <i class="fa fa-check" style="font-size:48px;color:green"></i></p>
 
@@ -109,7 +114,10 @@ end
 
 					<section>
 							<p>Grace à <span class="red">DotEnv</span> ont peu mettre toutes nos variables d'environnement dans un fichier .env</p>
+							<img src="https://i.imgur.com/yCqcW9L.png" style="max-height:300px">
+
 							<p>Dans le fichier .gitignore ont rajoutera simplement .env afin qu' il ne sois pas commit</p>
+							
 						</section>
 
 						<section>
@@ -134,21 +142,17 @@ gem "dotenv"
 									<pre><code class="zsh">
 bundle install
 								</code></pre>	
-								<img src="https://i.imgur.com/RU5LIhs.png" alt="">
+								<img src="https://i.imgur.com/RU5LIhs.png">
 									</section>
 								<section>
 									<p>	Un Gemfile c' est un fichier que l' on crée qui est utilisé pour décrire les dépendances de gem pour les progammes Ruby.</p>
-									<img src="https://i.imgur.com/Q95QqDR.png" alt="">
+									<img src="https://i.imgur.com/Q95QqDR.png">
 								</section>
 								
 								<section>
 										<h4>Step 3</h4>
 										<p>On crée un fichier .gitignore dans lequelle on rajoute le nom du fichier à ignorer .env</p>
-										<img src="https://i.imgur.com/qjnMmSv.png" alt=""  class="fragment" data-fragment-index="0">
-		<!-- 						img
-									<a href="#/2">
-										<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-									</a> -->
+										<img src="https://i.imgur.com/qjnMmSv.png" class="fragment" data-fragment-index="0">
 								</section>
 		
 								<section>
@@ -168,57 +172,61 @@ TWITTER_ACCESS_SECRET=64a84f8d-75cb-4689-8707-57937e5f7534
 								</section>
 		
 							</section>
-	
-					
-					<section>
-							<p>Lien : <a href="https://github.com/bkeepers/dotenv" target="_blank">https://github.com/bkeepers/dotenv</a></p>
-							<img src="https://i.imgur.com/yCqcW9L.png">
-						</section>
-
-				
-
-				
-
-					
-
-					<!-- <section>
-						<img src="https://atomrace.com/blog/wp-content/uploads/2016/02/heroku-logo-trans.png" style="max-width:50%">
-							<p>
-								1 projet ecommerce avec 2 fichiers .env.development &amp; .env.production sur Heroku.
-							</p>
-							<p class="fragment" data-fragment-index="0" style="font-size:30px;">1. La version de développement</p>
-							<p class="fragment" data-fragment-index="1" style="font-size:30px;">2. La version en production</p>
-						</section>
-
-						<section>
-								<p>
-										Sur la version de développement on crée une une newsletter. <br>Avant le passage en production, on utilisera un service comme <a href="https://mailtrap.io/" target="_target">mailtrap.io</a> pour éviter le spam.</p>
-									</p>
-						</section>
-							
-							
-						<section>
-
-								<p>
-										Ce service nous fournis des clefs d' API <br>(Application Programming Interface) pour tester <br>l' envoi et la réception de mail, elle font partis de nos <em><strong><span class="red">variables d' environnement</span></strong></em>  pour notre <br><span style="text-decoration:underline">serveur de développement</span>.
-									</p>
-							
 
 
-						</section>
+							<section>
+									<h4>Utilisation de la gem</h4>
+									<p>Dans un fichier app.rb</p>
+									<pre class="fragment" data-fragment-index="0"><code class="zsh">
+require 'dotenv'
 
-						<section>
+# Dotenv cherche par défaut un fichier .env
+# La méthode load ne renvoie pas d' érreur si un fichier .env n' éxiste pas 
+Dotenv.load
 
-								<p>
-										La version en production, utilisera d' autres <span clas="red">variables d' environnement</span> pour l' envoi de mail.
-									</p>
-						</section> -->
+# La méthode load! fonctionne come load mais elle renvoie une érreur si un fichier .env n' éxiste pas 
+Dotenv.load!
 
-		
+# La méthode overload fonctionne comme load mais surcharge 
+Dotenv.overload('.env.development.local')
 
-				
 
-					
+																	</code></pre> 	
+							</section>						
+			
+									<section>
+											<pre><code class="ruby" style="max-height:800px;
+												display: block;
+												padding: 5px;
+												overflow: auto;
+												word-wrap: normal;
+										">
+require 'gmail'
+require 'dotenv'
+
+# La méthode load! fonctionne come load mais elle renvoie une érreur si un fichier .env n' éxiste pas 
+Dotenv.load!
+
+# Dotenv.load cherche par défaut un fichier .env celui ci ne contient pas mes identifiant
+# La méthode load ne renvoie pas d' érreur si un fichier .env n' éxiste pas 
+# p Dotenv.load return #{"GMAIL_USERNAME"=>"david@gmail.com", "GMAIL_PASSWORD"=>"password", "TWITTER_CONSUMER_KEY"=>"738d5ee5-ce38-44d4-b8f9-24c95de59b03", "TWITTER_CONSUMER_SECRET"=>"474a09c3-523e-498c-9f48-b0fcb0389b28", "TWITTER_ACCESS_TOKEN"=>"aef9bd74-b52f-40fd-aa5f-77f7e079f0e8", "TWITTER_ACCESS_SECRET"=>"64a84f8d-75cb-4689-8707-57937e5f7534"}
+# #<Gmail::Client0x5565bf02c130 (david@gmail.com) disconnected>
+Dotenv.load
+
+# Surcharge les variables d'environnement en argument le fichier ou sont mes identifiants
+# returns #<Gmail::Client0x560275f6bf58 (dvddcrz@gmail.com) connected>
+Dotenv.overload('.env.development.local')
+
+p Gmail.connect(ENV['GMAIL_USERNAME'], ENV['GMAIL_PASSWORD'])	
+													
+																														</code></pre> 	
+									</section>
+						
+							<section>
+								<p>Et c'est tout!</p>
+								<a href="https://github.com/david-dacruz/demo-project">Lien du repo Github demo-project</a>
+							</section>
+
 			</div>
 		</div>
 
